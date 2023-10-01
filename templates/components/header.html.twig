@@ -1,0 +1,21 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/header.css')}}">
+{% endblock %}
+
+<header class="header">
+    <nav class="navBar">
+        <img src="{{ asset('assets/icons/LogoRefuge.png') }}" alt="logo" class="logo">
+        <div class="navLinks">
+            <ul>
+                <a href="{{ path('app_index') }}">Accueil</a>
+                <a href="{{ path('app_presentations') }}">Présentations</a>
+                <a href="{{ path('app_nos_proteges') }}">Nos protégés</a>
+                <a href="{{ path('app_benevolat') }}">Bénévolat</a>
+                <a href="{{ path('app_index') }}">Evènementiel</a>
+                <a href="{{ path('app_index') }}">Nous rejoindre</a>
+                <a href="{{ path('app_index') }}">Projets à venir</a>
+                <a><img src="{{ asset('assets/icons/login.svg') }}" alt="icon_login"  /></a>
+            </ul>
+        </div>
+    </nav>
+</header>

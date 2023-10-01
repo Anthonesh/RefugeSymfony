@@ -1,0 +1,33 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/caroussel.css')}}">
+{% endblock %} 
+ 
+ <div class="carousel-container">
+    <div class="carousel">
+        <button id="prevButton" class="button"><img src="{{ asset('assets/icons/navigate.svg') }}" alt="Précédent"></button>
+        <img src="{{ asset('assets/cards/Cabaretune.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset('assets/cards/Halfen.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Jappeloup.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset('assets/cards/Jesty.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Jojo.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Julie.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset("assets/cards/Lenthier d'Y.png") }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset('assets/cards/Léon.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Lila.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Mambo.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Mistral.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset('assets/cards/Ninja.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Pepsi.png') }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Petite fleur.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset("assets/cards/Qaida.png") }}" alt="carousel-img"  class="carousel-img"/>
+        <img src="{{ asset('assets/cards/Rolls.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset("assets/cards/Tommy.png") }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ asset('assets/cards/Zoé.png') }}" alt="carousel-img" class="carousel-img" />
+        <button id="nextButton" class="button"><img src="{{ asset('assets/icons/navigate.svg') }}" alt="Suivant"></button>
+    </div>
+</div>
+
+
+
+<div id="positionIndicator"></div>
+       

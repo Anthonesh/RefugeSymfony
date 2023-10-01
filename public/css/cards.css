@@ -1,0 +1,25 @@
+.cards{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    grid-template-columns: repeat(7,1fr); 
+    grid-template-rows: repeat(4,1fr); 
+    gap: 3% 3%; 
+
+}
+
+.cards .card{
+    max-width: 150px;
+    max-height: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);/*Définition d'un ombrage */
+    border: 2px solid;
+    border-radius: 3%;
+}
+
+.card:hover {
+    transform: scale(1.1); /* Agrandissement de l'image sur survol */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /*Définition d'un ombrage */
+}

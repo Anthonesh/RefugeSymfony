@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver un créneau{% endblock %}
+
+{% block body %}
+    <h2>Réserver un créneau</h2>
+
+   <form method="POST" action="{{ path('app_reservations_create', {'jourId': jourId, 'heureId': heureId}) }}">
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.telephone) }}
+
+        <button type="submit">Réserver</button>
+
+        {{ form_end(form) }}
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Refuge de St brès pour équidés{% endblock %}
+
+
+{% block body %}
+
+<div class="wrapper">
+{% include 'components/header.html.twig' %}
+<div class="aside">
+{% include 'components/aside.html.twig'%}
+</div>
+        
+<main class="main">
+    <h1>Bienvenue au refuge de Saint Brès</h1>
+    <div class="block">
+        <img src="{{ asset('assets/Photo.png') }}" alt="home_picture" class="picture" />
+    </div>
+    
+{% include 'components/caroussel.html.twig'%}
+</main>
+
+{% include 'components/footer.html.twig' %}   
+</div>
+
+
+
+{% endblock %}

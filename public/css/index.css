@@ -1,0 +1,52 @@
+ body {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #FAF5E9;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.block{
+    padding-left: 15%;
+    padding-right: 15%;
+    justify-content: center; 
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+
+.picture{
+    max-width: 650px;
+    height: 300px;
+} 
+
+.header {
+    grid-area: hd;
+  }
+  .footer {
+    grid-area: ft;
+  }
+  .main {
+    grid-area: main;
+  }
+  .aside {
+    grid-area: as;
+  }
+
+  .wrapper{
+      display: grid; 
+      grid-template-columns: 0.3fr 1.3fr 1fr; 
+      grid-template-rows: auto 2.1fr auto; 
+      grid-template-areas: 
+        "hd hd hd"
+        "as main main"
+        "ft ft ft"; 
+        min-height: 100vh;
+ }
+
+

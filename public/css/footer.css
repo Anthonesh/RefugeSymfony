@@ -1,0 +1,27 @@
+footer {
+    padding: 1%;
+}
+
+.line{
+    display: flex;
+    flex-grow: 1;
+    height: 2px; 
+    background-color: #000000; 
+    margin: 0% 5% 0% 15%;
+}
+
+.footer-block{
+    display: flex;
+}
+
+.footer-text{
+    max-width: 15%;
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+

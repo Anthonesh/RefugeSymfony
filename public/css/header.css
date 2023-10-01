@@ -1,0 +1,41 @@
+/* Style de la navBar */
+.navBar {
+    display: flex;
+    height: 70px;
+    background-color: #009B4D;
+    text-decoration: none;
+    overflow: hidden;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.navLinks {
+    flex-grow: 1;
+}
+
+.navBar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar ul a {
+    text-decoration: none;
+    color: #FAF5E9;
+    font-size: 16pt;
+    border-right: 1px solid #FAF5E9;
+    padding-right: 4%;
+    padding-left: 2%;
+    justify-content: center;
+}
+
+/* Style pour le dernier élément de la liste (pour supprimer la ligne de séparation) */
+.navBar ul a:last-child {
+    border-right: none;
+}
