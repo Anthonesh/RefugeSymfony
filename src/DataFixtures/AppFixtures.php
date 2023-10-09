@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 use App\Entity\Reservations;
 use App\Entity\Jours;
 use App\Entity\Heures;
+use App\Entity\Utilisateurs;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -12,6 +13,10 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+
+
+
+        $adminUser = $this->createUtilisateurs("admin@refuge.com",["ROLE_ADMIN"], "123456789", "Rusch",  "Juelin", "0745321695",  $manager);
 
         $joursSemaine = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
         
@@ -44,6 +49,25 @@ class AppFixtures extends Fixture
         $manager->persist($reservation);
         
         $manager->flush();
+    }
+
+    public function createUtilisateurs($Email, $arrRoles, $Password, $Nom, $Prenom, $Telephone,  ObjectManager $manager): Utilisateurs
+    {
+        $user = new Utilisateurs();
+        $user->setEmail($Email);
+        $user->setRoles($arrRoles);
+        $user->setPassword(password_hash($Password, PASSWORD_BCRYPT));
+        $user->setNomUtilisateur($Nom);
+        $user->setPrenomUtilisateur($Prenom);
+        $user->setNumeroTelephoneUtilisateur($Telephone);
+
+
+        $manager->persist($user);
+
+        $this->setReference('utilisateurs-' . $this->counter, $user);
+        $this->counter++;
+        
+        return $user;
     }
 }
         

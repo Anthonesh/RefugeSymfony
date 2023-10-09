@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pensionnaires{% endblock %}
+
+{% block body %}
+    <h1>Pensionnaires</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pensionnaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_pensionnaire</th>
+                <td>{{ pensionnaire.nomPensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Type_pensionnaire</th>
+                <td>{{ pensionnaire.typePensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Date_de_naissance_pensionnaire</th>
+                <td>{{ pensionnaire.dateDeNaissancePensionnaire ? pensionnaire.dateDeNaissancePensionnaire|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image_pensionnaire</th>
+                <td>{{ pensionnaire.imagePensionnaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pensionnaires_index') }}">back to list</a>
+
+    <a href="{{ path('app_pensionnaires_edit', {'id': pensionnaire.id}) }}">edit</a>
+
+    {{ include('pensionnaires/_delete_form.html.twig') }}
+{% endblock %}

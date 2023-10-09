@@ -16,6 +16,9 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
+
 
 class LoginAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -23,8 +26,9 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
-    {
+    public function __construct(private UrlGeneratorInterface $urlGenerator,private AuthorizationCheckerInterface $authorizationChecker)
+    { 
+
     }
 
     public function authenticate(Request $request): Passport
@@ -45,20 +49,26 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
+            
+        }
+    
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
-        // For example:
+    
+        // Pour les utilisateurs qui ne sont pas administrateurs, redirigez-les vers la page d'accueil
         return new RedirectResponse($this->urlGenerator->generate('app_index'));
-        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
-    {
-        // Authentification échouée, redirigez vers la page de registration
-        return new RedirectResponse($this->urlGenerator->generate('app_register'));
-    }
+    
+
+    // public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
+    // {
+    //     // Authentification échouée, redirigez vers la page de registration
+    //     return new RedirectResponse($this->urlGenerator->generate('app_register'));
+    // }
 
 
         // ATTENTION AVEC CECI LE ROLE ADMIN ET SUPER_ADMIN SERONT AUSSI REDIRIGE

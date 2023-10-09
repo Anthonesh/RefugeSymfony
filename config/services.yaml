@@ -6,6 +6,13 @@
 parameters:
 
 services:
+    App\Security\LoginAuthenticator:
+        autowire: true
+        autoconfigure: true
+        tags:
+            - { name: 'security.authenticator' }
+        arguments:
+            $authorizationChecker: '@security.authorization_checker'
     Doctrine\ORM\EntityManagerInterface: '@doctrine.orm.entity_manager'
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
