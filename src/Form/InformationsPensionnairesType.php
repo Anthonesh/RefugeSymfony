@@ -17,7 +17,6 @@ class InformationsPensionnairesType extends AbstractType
             ->add('soin_information_pensionnaire')
             ->add('carnet_de_sante_information_pensionnaire')
             ->add('histoire_information_pensionnaire')
-            ->add('pensionnaire')
         ;
     }
 

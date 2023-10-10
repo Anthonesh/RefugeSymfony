@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: PensionnairesRepository::class)]
 class Pensionnaires
@@ -27,6 +30,7 @@ class Pensionnaires
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image_pensionnaire = null;
+
 
     #[ORM\OneToMany(mappedBy: 'pensionnaire', targetEntity: InformationsPensionnaires::class)]
     private Collection $informationPensionnaire;
@@ -82,11 +86,21 @@ class Pensionnaires
         return $this->image_pensionnaire;
     }
 
+    public function getImagePensionnaireFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
     public function setImagePensionnaire(?string $image_pensionnaire): static
     {
         $this->image_pensionnaire = $image_pensionnaire;
 
         return $this;
+    }
+
+    public function setImagePensionnaireFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
     }
 
     /**
@@ -118,4 +132,5 @@ class Pensionnaires
 
         return $this;
     }
+
 }

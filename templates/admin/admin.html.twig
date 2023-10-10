@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+
+    <h2>Gérer le contenu des pensionnaires</h2>
+    <ul>
+        <li><a href="{{ path('app_pensionnaires_new') }}">Ajouter un nouveau pensionnaire</a></li>
+        <li><a href="{{ path('app_pensionnaires_index') }}">Liste des pensionnaires</a></li>
+    </ul>
+{% endblock %}

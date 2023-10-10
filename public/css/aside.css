@@ -8,6 +8,8 @@
   align-items: center; /* Centrer horizontalement */
   justify-content: center; /* Centrer verticalement */
   text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .aside p{

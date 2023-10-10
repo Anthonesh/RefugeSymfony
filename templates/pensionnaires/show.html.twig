@@ -12,20 +12,36 @@
                 <td>{{ pensionnaire.id }}</td>
             </tr>
             <tr>
-                <th>Nom_pensionnaire</th>
+                <th>Nom pensionnaire</th>
                 <td>{{ pensionnaire.nomPensionnaire }}</td>
             </tr>
             <tr>
-                <th>Type_pensionnaire</th>
+                <th>Type pensionnaire</th>
                 <td>{{ pensionnaire.typePensionnaire }}</td>
             </tr>
             <tr>
-                <th>Date_de_naissance_pensionnaire</th>
+                <th>Date de naissance</th>
                 <td>{{ pensionnaire.dateDeNaissancePensionnaire ? pensionnaire.dateDeNaissancePensionnaire|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Image_pensionnaire</th>
+                <th>Image</th>
                 <td>{{ pensionnaire.imagePensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Nourriture</th>
+                <td>{{ informationsPensionnaires.nourritureInformationPensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Soin</th>
+                <td>{{ informationsPensionnaires.soinInformationPensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Carnet de santé</th>
+                <td>{{ informationsPensionnaires.carnetDeSanteInformationPensionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Histoire</th>
+                <td>{{ informationsPensionnaires.histoireInformationPensionnaire }}</td>
             </tr>
         </tbody>
     </table>

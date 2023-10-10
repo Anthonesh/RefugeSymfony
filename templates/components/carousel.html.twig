@@ -1,11 +1,12 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('css/caroussel.css')}}">
 {% endblock %} 
+
  
  <div class="carousel-container">
     <div class="carousel">
         <button id="prevButton" class="button"><img src="{{ asset('assets/icons/navigate.svg') }}" alt="Précédent"></button>
-        <img src="{{ asset('assets/cards/Cabaretune.png') }}" alt="carousel-img" class="carousel-img" />
+        <img src="{{ path('show_image', {'id': pensionnaire.id}) }}" alt="Image" />
         <img src="{{ asset('assets/cards/Halfen.png') }}" alt="carousel-img"  class="carousel-img"/>
         <img src="{{ asset('assets/cards/Jappeloup.png') }}" alt="carousel-img" class="carousel-img" />
         <img src="{{ asset('assets/cards/Jesty.png') }}" alt="carousel-img"  class="carousel-img"/>
