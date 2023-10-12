@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Jours;
 use App\Entity\Heures;
 use App\Entity\Reservations;
+use App\Repository\PensionnairesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,11 @@ use Doctrine\ORM\EntityManagerInterface;
 class BenevolatController extends AbstractController
 {
     #[Route('/benevolat', name: 'app_benevolat')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager,PensionnairesRepository $pensionnairesRepository): Response
     {
         $jours = $entityManager->getRepository(Jours::class)->findAll();
         $plagesHoraires = $entityManager->getRepository(Heures::class)->findAll();
+        $pensionnaires = $pensionnairesRepository->findAll();
 
         $reservations = [];
         foreach ($jours as $jour) {
@@ -34,6 +36,7 @@ class BenevolatController extends AbstractController
             'plagesHoraires' => $plagesHoraires,
             'reservations' => $reservations,
             'controller_name' => 'BenevolatController',
+            'pensionnaires' => $pensionnaires, 
         ]);
     }
 

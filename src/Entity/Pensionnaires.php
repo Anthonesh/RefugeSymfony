@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 #[ORM\Entity(repositoryClass: PensionnairesRepository::class)]
@@ -17,6 +17,7 @@ class Pensionnaires
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(name:'id_pensionnaire')]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
