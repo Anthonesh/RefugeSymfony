@@ -43,4 +43,3 @@ document.addEventListener('DOMContentLoaded', function () {
     nextButton.addEventListener('click', showNextImage);
 });
 
-// Planning

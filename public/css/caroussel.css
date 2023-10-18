@@ -12,18 +12,18 @@
     align-items: center;
     text-align: center;
     transition: transform 0.5s ease; 
+    gap: 10px;
 }
 
 .carousel-img {
-    max-width: 100px;
-    max-height: 200px;
-    margin: 0% 1% 0% 1%;
+    width: 6vw;
+    height: 16vh;
+    margin: 0% 2% 0% 2%;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);/*Définition d'un ombrage */
     border: 2px solid;
     border-radius: 3%;
-    
 }
 
 .carousel-img a{

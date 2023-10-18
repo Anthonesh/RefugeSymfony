@@ -3,21 +3,20 @@
 {% endblock %} 
 
 
- <div class="carousel-container">
+<div class="carousel-container">
     <div class="carousel">
         <button id="prevButton" class="button"><img src="{{ asset('assets/icons/navigate.svg') }}" alt="Précédent"></button>
 
         {% for pensionnaire in pensionnaires %}
-        <a href="{{ path('app_carousel', { 'id': pensionnaire.id }) }}">
-        <img src="{{ asset('assets/uploads/images/' ~ pensionnaire.getImagePensionnaire()) }}" alt="carousel-img" class="carousel-img" />
-    </a>
-        {% endfor %}
-        
+        {# Construisez le lien vers la page de détails en utilisant l'ID #}
+        <a href="{{ path('app_details_pensionnaires', {'id': pensionnaire.id}) }}">
+            <img src="{{ asset('assets/uploads/images/' ~ pensionnaire.getImagePensionnaire()) }}" alt="carousel-img" class="carousel-img" />
+        </a>
+    {% endfor %}
 
         <button id="nextButton" class="button"><img src="{{ asset('assets/icons/navigate.svg') }}" alt="Suivant"></button>
     </div>
 </div>
-
 
 
 

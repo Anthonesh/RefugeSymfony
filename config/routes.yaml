@@ -6,4 +6,7 @@ controllers:
     
 app_reservation_create:
     path: '/reservation/create/{jourId}/{heureId}'
-    controller: App\Controller\ReservationController::create
+    controller: App\Controller\ReservationController::create   
+app_details_pensionnaires:
+    path: '/details/pensionnaires/{id}'
+    controller: 'App\Controller\DetailsPensionnairesController::index'
