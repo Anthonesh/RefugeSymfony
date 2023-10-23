@@ -1,6 +1,8 @@
 <?php
 
 namespace App\DataFixtures;
+use App\Entity\InformationsPensionnaires;
+use App\Entity\Pensionnaires;
 use App\Entity\Reservations;
 use App\Entity\Jours;
 use App\Entity\Heures;
@@ -15,9 +17,11 @@ class AppFixtures extends Fixture
     {
 
 
-
+        //Creation d'utilisateurs
         $adminUser = $this->createUtilisateurs("admin@refuge.com",["ROLE_ADMIN"], "123456789", "Rusch",  "Juelin", "0745321695",  $manager);
 
+
+        //Création du planning
         $joursSemaine = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
         
         foreach ($joursSemaine as $jour) {
@@ -39,6 +43,7 @@ class AppFixtures extends Fixture
             $plageHoraire->setHeureFin(new \DateTime($heureFin));
             $manager->persist($plageHoraire);
         }
+
         
         // Créez ici des réservations fictives, par exemple :
         $plageHoraire = $manager->getRepository(Heures::class)->findOneBy(['heureDebut' => new \DateTime('08:00')]);
@@ -49,6 +54,64 @@ class AppFixtures extends Fixture
         $manager->persist($reservation);
         
         $manager->flush();
+
+        //Pensionnaires data
+
+        $nomsPensionnaires = [
+            'Cabaretune', 'Halfen', 'Jappeloup', 'Jesty', 'Jojo', 'Julie', "Lenthier d'Y",
+            'Léon', 'Lila', 'Mambo', 'Mistral', 'Ninja', 'Pepsi', 'Petite fleur', 'Qaida', 'Rolls', 'Tommy', 'Zoe'
+        ];
+
+        $typesDeCheval = ['Poney', 'Cheval de selle', 'Cheval de course', 'Pur-sang', 'Trait'];
+
+        $images = [
+            'assets\cards\Cabaretune.png', 'assets\cards\Halfen.png', 'assets\cards\Jappeloup.png', 'assets\cards\Jesty.png', 'assets\cards\Jojo.png',
+            'assets\cards\Julie.png', "assets\cards\Lenthier d'Y.png", 'assets\cards\Léon.png', 'assets\cards\Lila.png', 'assets\cards\Mambo.png', 
+            'assets\cards\Mistral.png', 'assets\cards\Ninja.png', 'assets\cards\Pepsi.png', 'assets\cards\Petite_fleur.png', 'assets\cards\Qaida.png',
+            'assets\cards\Rolls.png', 'assets\cards\Tommy.png', 'assets\cards\Zoé.png'
+        ];
+
+        $imageIndex = 0;
+
+        foreach ($nomsPensionnaires as $nom) {
+            $pensionnaire = new Pensionnaires();
+            $pensionnaire->setNomPensionnaire($nom);
+            $pensionnaire->setTypePensionnaire($typesDeCheval[array_rand($typesDeCheval)]);
+            $pensionnaire->setDateDeNaissancePensionnaire(new \DateTime('-' . mt_rand(1, 20) . ' years'));
+            
+            // Attribuer une image au pensionnaire en utilisant le compteur
+            $pensionnaire->setImagePensionnaire($images[$imageIndex]);
+        
+            // Incrémenter le compteur pour passer à l'image suivante
+            $imageIndex++;
+        
+            // Assurez-vous que le compteur ne dépasse pas la taille du tableau
+            if ($imageIndex >= count($images)) {
+                $imageIndex = 0; // Revenir au début du tableau si nécessaire
+            }
+
+
+            $manager->persist($pensionnaire);
+        }
+
+        $manager->flush();
+
+        $pensionnaires = $manager->getRepository(Pensionnaires::class)->findAll();
+
+        foreach ($pensionnaires as $pensionnaire) {
+            $infosPensionnaire = new InformationsPensionnaires();
+            $infosPensionnaire->setPensionnaire($pensionnaire);
+            $infosPensionnaire->setNourritureInformationPensionnaire('Information sur la nourriture');
+            $infosPensionnaire->setSoinInformationPensionnaire('Information sur les soins');
+            $infosPensionnaire->setCarnetDeSanteInformationPensionnaire('Information sur le carnet de santé');
+            $infosPensionnaire->setHistoireInformationPensionnaire('Histoire du pensionnaire');
+            // Ajoutez d'autres propriétés si nécessaire
+
+            $manager->persist($infosPensionnaire);
+        }
+
+        $manager->flush();
+
     }
 
     public function createUtilisateurs($Email, $arrRoles, $Password, $Nom, $Prenom, $Telephone,  ObjectManager $manager): Utilisateurs
@@ -64,11 +127,9 @@ class AppFixtures extends Fixture
 
         $manager->persist($user);
 
-        $this->setReference('utilisateurs-' . $this->counter, $user);
-        $this->counter++;
+        // $this->setReference('utilisateurs-' . $this->counter, $user);
+        // $this->counter++;
         
         return $user;
     }
 }
-        
-

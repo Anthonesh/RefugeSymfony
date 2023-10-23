@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire index{% endblock %}
+
+{% block body %}
+
+    <h1>Formulaire</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Numero rue</th>
+                <th>Rue</th>
+                <th>Code_postal</th>
+                <th>Pays</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formulaire in formulaires %}
+            <tr>
+                <td>{{ formulaire.nomFormulaire }}</td>
+                <td>{{ formulaire.prenomFormulaire }}</td>
+                <td>{{ formulaire.numeroRueFormulaire }}</td>
+                <td>{{ formulaire.rueFormulaire }}</td>
+                <td>{{ formulaire.codePostalFormulaire }}</td>
+                <td>{{ formulaire.paysFormulaire }}</td>
+                <td>{{ formulaire.telephoneFormulaire }}</td>
+                <td>{{ formulaire.emailFormulaire }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_dons') }}">Create new</a>
+{% endblock %}

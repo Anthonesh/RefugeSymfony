@@ -23,7 +23,7 @@
 
         {% for pensionnaire in pensionnaires %}
         <a href="{{ path('app_details_pensionnaires', {'id': pensionnaire.id}) }}">
-        <img src="{{ asset('assets/uploads/images/' ~ pensionnaire.getImagePensionnaire()) }}" alt="carousel-img" class="card" />  
+        <img src="{{ asset('' ~ pensionnaire.getImagePensionnaire()) }}" alt="carousel-img" class="card" />  
         {% endfor %}
 </div>  
     {% include 'components/carousel.html.twig'%}
